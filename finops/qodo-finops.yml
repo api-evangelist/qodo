@@ -1,0 +1,100 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Qodo
+providerId: qodo
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- AI
+- Code Review
+- Code Integrity
+- Developer Tools
+- Pull Requests
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Qodo spend. Qodo bills per active user per month on a
+  subscription model (free Developer, Teams, Enterprise) rather than per-token
+  or per-API-call usage. Cost is driven by the number of seats that actively
+  trigger PR reviews or use the IDE/CLI. The open-source PR-Agent component is
+  Apache-2.0 and free; when self-hosted its real cost is the underlying LLM
+  provider tokens and the compute the operator runs the webhook server on.
+notes: >-
+  Per-seat rates and free-tier allowances change; verify against the Qodo
+  pricing page during reconciliation. Self-hosted PR-Agent shifts cost from a
+  Qodo subscription to the operator's LLM API bill and infrastructure.
+sources:
+- https://www.qodo.ai/pricing/
+- https://docs.qodo.ai/subscription-plans
+- https://github.com/qodo-ai/pr-agent
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Qodo
+serviceCategory: Developer Tools
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly or Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Qodo Platform
+  ServiceCategory: Developer Tools
+  ProviderName: Qodo
+  PublisherName: Qodo
+  InvoiceIssuerName: Qodo
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: active_seats
+  description: Active users who trigger PR reviews or use the IDE/CLI, billed per seat per month on Teams/Enterprise.
+  unit: seats
+  aggregation: sum
+  dimensions:
+  - account
+  - team
+  - plan
+- name: pr_reviews
+  description: Pull-request reviews performed; capped on the free Developer tier (org-wide allowance).
+  unit: reviews
+  aggregation: sum
+  dimensions:
+  - account
+  - repository
+- name: ide_cli_credits
+  description: IDE/CLI credits consumed by Qodo Gen and Qodo Command; capped on the free tier.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - user
+- name: self_hosted_llm_tokens
+  description: LLM tokens consumed by self-hosted PR-Agent, billed by the operator's own LLM provider (not Qodo).
+  unit: tokens
+  aggregation: sum
+  dimensions:
+  - deployment
+  - llm_provider
+principles:
+- name: Visibility
+  description: Track active seats and free-tier allowance burn (PR reviews, IDE/CLI credits) against the plan.
+- name: Allocation
+  description: Map seats and repositories to teams/cost centers; for self-hosted PR-Agent, attribute LLM token spend by deployment.
+- name: Optimization
+  description: Right-size seat count to actually-active reviewers; use the Apache-2.0 self-hosted PR-Agent with a cost-efficient LLM where a hosted subscription is not required.
+- name: Accountability
+  description: Review seat utilization and free-tier overflow monthly; assign owners per repository/team and per self-hosted deployment.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qodo",
+    "version": "1.0",
+    "description": "Qodo (formerly CodiumAI) has no documented public HTTP REST API. This collection documents Qodo's real developer surface: Qodo Merge (PR-Agent) pull-request comment commands and Qodo Command/CLI usage. Items are documentation aids, not live HTTP endpoints."
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Qodo Merge (PR-Agent)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/review (PR comment command)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://github.com/qodo-ai/pr-agent"
+          },
+          "docs": "Post '/review' as a pull-request comment to trigger an AI review. Handled by the Qodo Merge Git app or self-hosted PR-Agent; not an HTTP API endpoint."
+        },
+        {
+          "info": {
+            "name": "/describe (PR comment command)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://github.com/qodo-ai/pr-agent"
+          },
+          "docs": "Post '/describe' as a pull-request comment to auto-generate a PR title and description. Not an HTTP API endpoint."
+        },
+        {
+          "info": {
+            "name": "/improve (PR comment command)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://github.com/qodo-ai/pr-agent"
+          },
+          "docs": "Post '/improve' as a pull-request comment to get code improvement suggestions. Not an HTTP API endpoint."
+        },
+        {
+          "info": {
+            "name": "/ask (PR comment command)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://github.com/qodo-ai/pr-agent"
+          },
+          "docs": "Post '/ask <question>' as a pull-request comment to ask about the changes. Not an HTTP API endpoint."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Qodo Command/CLI",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "qodo chat (CLI)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://github.com/qodo-ai/command"
+          },
+          "docs": "Run 'qodo chat' for interactive terminal chat with an agent. CLI command, not an HTTP API endpoint."
+        },
+        {
+          "info": {
+            "name": "qodo --webhook (local HTTP service)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://github.com/qodo-ai/command"
+          },
+          "docs": "Run an agent in '--webhook' mode to expose it as a local, user-hosted HTTP service defined by the user's own agent config. Not a documented Qodo public API."
+        },
+        {
+          "info": {
+            "name": "qodo --mcp (local MCP server)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://github.com/qodo-ai/command"
+          },
+          "docs": "Run an agent with '--mcp' to serve it as a local Model Context Protocol server. User-hosted; not a Qodo public API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

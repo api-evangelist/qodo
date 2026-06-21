@@ -1,0 +1,66 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Qodo
+providerId: qodo
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- AI
+- Code Review
+- Code Integrity
+- Developer Tools
+- Pull Requests
+- Rate Limiting
+- Quotas
+description: >-
+  Qodo does not publish per-endpoint HTTP rate limits because it has no
+  documented public REST API. Usage is governed by subscription-tier
+  allowances instead: the free Developer tier caps monthly PR reviews and
+  IDE/CLI credits (organization-wide), while Teams and Enterprise raise or
+  remove those caps per active seat. Self-hosted PR-Agent (Apache-2.0) is not
+  rate-limited by Qodo; its throughput is bounded by the user's own LLM
+  provider rate limits and infrastructure.
+notes: >-
+  Confirm current free-tier allowances and any per-seat throttling on the Qodo
+  pricing and documentation pages during reconciliation. Self-hosted PR-Agent
+  is subject to the rate limits of whichever LLM API (e.g. OpenAI, Anthropic)
+  the operator configures, not Qodo.
+sources:
+- https://www.qodo.ai/pricing/
+- https://docs.qodo.ai/subscription-plans
+- https://github.com/qodo-ai/pr-agent
+responseCodes:
+  throttled: 429
+limits:
+- name: Free PR Reviews
+  scope: organization
+  metric: reviews
+  limit: 30 per month (Developer tier)
+  notes: Organization-wide allowance on the free tier; raised on Teams/Enterprise.
+- name: Free IDE / CLI Credits
+  scope: organization
+  metric: credits
+  limit: 250 per month (Developer tier)
+  notes: Organization-wide allowance on the free tier; raised on Teams/Enterprise.
+- name: Teams / Enterprise Allowances
+  scope: account
+  metric: seats
+  limit: see provider documentation
+  notes: Allowances scale per active seat; negotiated for Enterprise.
+- name: Self-Hosted PR-Agent
+  scope: deployment
+  metric: requests
+  limit: bounded by user's own LLM provider limits
+  notes: Qodo imposes no rate limit on self-hosted PR-Agent; the configured LLM API governs throughput.
+policies:
+- name: Tiered Allowances
+  description: Usage caps loosen from Developer (free) to Teams to Enterprise.
+- name: Active-Seat Metering
+  description: Only users who trigger reviews or use the IDE/CLI consume an allowance.
+- name: Self-Hosted Independence
+  description: Self-hosted PR-Agent throughput depends on the operator's LLM provider and infrastructure, not Qodo.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

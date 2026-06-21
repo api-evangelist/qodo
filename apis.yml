@@ -1,0 +1,120 @@
+aid: qodo
+url: https://raw.githubusercontent.com/api-evangelist/qodo/refs/heads/main/apis.yml
+name: Qodo
+kind: company
+description: Qodo (formerly CodiumAI) is an AI code-integrity platform for automated
+  code review, test generation, and code quality across the SDLC. Its developer surface
+  is delivered primarily as a hosted Git app and open-source PR-Agent (Qodo Merge),
+  IDE plugins (Qodo Gen), and a terminal agent runtime (Qodo Command/CLI) rather than
+  a broad public HTTP API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- AI
+- Code Review
+- Code Integrity
+- Developer Tools
+- Pull Requests
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: qodo:qodo-merge-pr-agent
+  name: Qodo Merge (PR-Agent)
+  tags:
+  - Code Review
+  - Pull Requests
+  - Git App
+  - Open Source
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://github.com/qodo-ai/pr-agent
+  properties:
+  - url: https://docs.qodo.ai/code-review
+    type: Documentation
+  - url: https://github.com/qodo-ai/pr-agent
+    type: SourceCode
+  - url: openapi/qodo-openapi.yml
+    type: OpenAPI
+  - url: collections/qodo.postman_collection.json
+    type: PostmanCollection
+  - url: collections/qodo.opencollection.json
+    type: OpenCollection
+  description: AI pull-request reviewer. Available as the Apache-2.0 open-source PR-Agent
+    (CLI, GitHub Action, Docker, self-hosted webhook server) and as the hosted Qodo
+    Merge Git app. It is invoked through Git provider events and PR comment commands
+    (/review, /describe, /improve, /ask) rather than a documented public REST API;
+    self-hosted deployments expose a webhook HTTP endpoint that Git providers call.
+- aid: qodo:qodo-gen
+  name: Qodo Gen
+  tags:
+  - IDE Plugin
+  - Test Generation
+  - Code Generation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.qodo.ai/products/qodo-gen/
+  properties:
+  - url: https://docs.qodo.ai
+    type: Documentation
+  - url: https://plugins.jetbrains.com/plugin/21206-qodo-gen
+    type: x-jetbrains-plugin
+  - url: https://marketplace.visualstudio.com/items?itemName=Codium.codium
+    type: x-vscode-extension
+  description: AI pair-programmer delivered as JetBrains and VS Code IDE plugins for
+    context-aware code generation, test generation, and documentation. It is an editor
+    extension and does not expose a public HTTP API; integration is through the IDE
+    marketplace plugins.
+- aid: qodo:qodo-command-cli
+  name: Qodo Command/CLI
+  tags:
+  - CLI
+  - Agents
+  - Automation
+  - MCP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://qodo.ai/products/qodo-gen-cli
+  properties:
+  - url: https://docs.qodo.ai
+    type: Documentation
+  - url: https://github.com/qodo-ai/command
+    type: SourceCode
+  - url: https://www.npmjs.com/package/@qodo/command
+    type: x-npm-package
+  description: Terminal runtime for building, running, and managing AI agents across
+    the SDLC, installed via npm (@qodo/command). Agents can be exposed locally as
+    HTTP services (--webhook), as a web UI (--ui), or as Model Context Protocol (MCP)
+    servers (--mcp). These are user-hosted local services, not a documented hosted
+    Qodo REST API.
+- aid: qodo:qodo-hosted-api
+  name: Qodo Hosted API
+  tags:
+  - Platform
+  - Hosted
+  - Integrations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qodo.ai
+  properties:
+  - url: https://docs.qodo.ai
+    type: Documentation
+  - url: openapi/qodo-openapi.yml
+    type: OpenAPI
+  description: The hosted Qodo platform that backs Qodo Merge, Qodo Gen, and Qodo
+    Command. As of this writing Qodo does not publish a documented, general-purpose
+    public HTTP REST API with stable endpoints; access is via the Git app, IDE plugins,
+    and CLI. This entry is a placeholder for any future documented hosted API surface.
+common:
+- type: GitHubOrganization
+  url: https://github.com/qodo-ai
+- type: LinkedIn
+  url: https://www.linkedin.com/company/qodoai
+- type: Website
+  url: https://www.qodo.ai
+- type: Documentation
+  url: https://docs.qodo.ai
+- type: Plans
+  url: plans/qodo-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/qodo-rate-limits.yml
+- type: FinOps
+  url: finops/qodo-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,89 @@
+aid: qodo
+name: Qodo
+review:
+  question: Does Qodo expose a documented public HTTP REST API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Qodo does not document a public event,
+    SSE, or WebSocket streaming API. The only HTTP callbacks involved are
+    inbound Git provider webhooks consumed by self-hosted PR-Agent, which are
+    defined by the Git provider (GitHub/GitLab/Bitbucket/Azure DevOps/Gitea),
+    not by a published Qodo event API.
+findings:
+  summary: |
+    Qodo (formerly CodiumAI) does not publish a documented, general-purpose
+    public HTTP REST API with stable, versioned endpoints. Its developer
+    surface is delivered through three integration modes plus the hosted
+    platform:
+
+      1. Qodo Merge (PR-Agent) - an Apache-2.0 open-source PR reviewer
+         (github.com/qodo-ai/pr-agent) and a hosted Git app. It is invoked by
+         Git provider events and pull-request comment commands (/review,
+         /describe, /improve, /ask), not by a public REST API. Self-hosted
+         deployments run a webhook server that RECEIVES inbound HTTP callbacks
+         from the Git provider; this is an integration target, not a public
+         Qodo API.
+
+      2. Qodo Gen - JetBrains and VS Code IDE plugins. An editor extension
+         with no public HTTP API.
+
+      3. Qodo Command/CLI - npm package @qodo/command that runs AI agents in
+         the terminal and can expose user-defined agents locally as HTTP
+         services (--webhook), a web UI (--ui), or MCP servers (--mcp). These
+         are user-hosted local endpoints defined by the user's own agent
+         config, not a fixed Qodo API surface.
+
+    Because there are no documented public HTTP endpoints, the OpenAPI artifact
+    uses an empty paths object with an accurate description rather than
+    fabricating an API surface.
+  transports:
+    - protocol: Git App / Webhook (inbound to self-hosted PR-Agent)
+      scheme: https
+      documented: true
+      note: Self-hosted PR-Agent exposes a webhook server that receives Git provider callbacks; the contract is the Git provider's webhook, not a public Qodo API.
+    - protocol: CLI
+      scheme: n/a
+      documented: true
+      note: Qodo Command installed via npm (@qodo/command); local agent runtime.
+    - protocol: IDE Plugin
+      scheme: n/a
+      documented: true
+      note: Qodo Gen distributed via JetBrains Marketplace and VS Code Marketplace.
+    - protocol: MCP (local)
+      scheme: stdio/http
+      documented: true
+      note: Qodo Command can serve user-defined agents as Model Context Protocol servers via --mcp; user-hosted.
+    - protocol: Public REST API
+      scheme: https
+      documented: false
+      note: No documented public HTTP REST API base URL or endpoints are published by Qodo as of the review date.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket API is documented.
+  endpointsConfirmedRest: []
+sources:
+  - url: https://docs.qodo.ai
+    type: Documentation
+    note: Documentation covers Code Review, Code Intelligence, Governance, Integrations, Deployment; no public REST API reference or base URL.
+  - url: https://github.com/qodo-ai/pr-agent
+    type: SourceCode
+    note: Apache-2.0 PR-Agent; deployed via CLI, GitHub Action, Docker, webhooks, self-hosted. Commands /review, /describe, /improve, /ask. No HTTP API.
+  - url: https://github.com/qodo-ai/command
+    type: SourceCode
+    note: Qodo Command CLI; npm @qodo/command; --webhook, --ui, --mcp expose user-hosted local services, not a Qodo public API.
+  - url: https://www.qodo.ai/pricing/
+    type: Pricing
+    note: Per-seat subscription (Developer free, Teams, Enterprise); not per-API usage metering.
+actions:
+  openapiPath: openapi/qodo-openapi.yml
+  apisYmlUpdated: true
+  reason: |
+    No public HTTP REST API surface exists. The OpenAPI document was authored
+    with paths:{} and an explicit description of why no endpoints are listed,
+    so the catalog never misrepresents Qodo as exposing a documented public
+    REST API. apis.yml accurately types each interface (Git app / OSS PR-Agent,
+    IDE plugin, CLI, and a placeholder hosted-API entry).

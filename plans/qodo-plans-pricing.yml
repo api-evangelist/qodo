@@ -1,0 +1,144 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Qodo
+providerId: qodo
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- AI
+- Code Review
+- Code Integrity
+- Developer Tools
+- Pull Requests
+- Plans
+description: >-
+  Qodo uses per-seat subscription pricing rather than per-token API metering.
+  A free Developer tier provides a capped monthly allowance of PR reviews and
+  IDE/CLI credits, a Teams tier is billed per active user per month, and
+  Enterprise is custom-negotiated with self-hosted / on-premise options. Only
+  users who actively trigger reviews (opening PRs) or use the IDE/CLI consume
+  a paid seat. The open-source PR-Agent component is Apache-2.0 licensed and
+  free to self-host (the user supplies their own LLM API keys and compute).
+notes: >-
+  Pricing reflects publicly listed Qodo plans as of 2026-06-21 and is subject
+  to change; verify current tiers, allowances, and per-seat rates on the Qodo
+  pricing page during reconciliation. Free-tier allowances (PR reviews and
+  credits) are organization-wide, not per user.
+sources:
+- https://www.qodo.ai/pricing/
+- https://docs.qodo.ai/subscription-plans
+plans:
+- id: qodo-developer-free
+  name: Developer (Free)
+  type: free
+  description: >-
+    Free tier for individuals and small teams with a capped monthly allowance
+    of PR reviews and IDE/CLI credits shared across the organization.
+  entries:
+  - label: PR Reviews
+    name: pr_reviews
+    type: limit
+    metric: reviews
+    limit: 30
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: IDE / CLI Credits
+    name: ide_cli_credits
+    type: limit
+    metric: credits
+    limit: 250
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: Qodo Merge (PR-Agent) hosted Git app
+  - name: Qodo Gen IDE plugin
+  - name: Qodo Command/CLI
+- id: qodo-teams
+  name: Teams
+  type: subscription
+  description: >-
+    Per-active-user monthly subscription with full Qodo Merge, Qodo Gen, and
+    Qodo Command access, multi-repo awareness, and org best-practice learning.
+  entries:
+  - label: Per Active User (annual billing)
+    name: teams_seat_annual
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $30 per active user / month (billed annually)
+    userMultiplied: true
+  - label: Per Active User (monthly billing)
+    name: teams_seat_monthly
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $38 per active user / month (billed monthly)
+    userMultiplied: true
+  elements:
+  - name: Qodo Merge (PR-Agent) hosted Git app
+  - name: Qodo Gen IDE plugin
+  - name: Qodo Command/CLI
+  - name: Multi-repository awareness
+  - name: Organizational best-practice learning
+- id: qodo-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom-negotiated plan with SSO, advanced administration, governance,
+    self-hosted / on-premise deployment, and dedicated support.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales (custom, per-seat from ~$45/user/mo at list)
+    userMultiplied: false
+  elements:
+  - name: SSO and advanced administration
+  - name: Code governance (rules and standards)
+  - name: Self-hosted / on-premise deployment
+  - name: Dedicated support
+- id: qodo-pr-agent-oss
+  name: PR-Agent (Open Source)
+  type: free
+  description: >-
+    Apache-2.0 open-source PR-Agent, free to self-host via CLI, GitHub Action,
+    Docker, or a webhook server. The user provides their own LLM API keys and
+    compute; no Qodo subscription is required.
+  entries:
+  - label: Self-Hosted PR-Agent
+    name: pr_agent_self_hosted
+    type: flat
+    metric: license
+    limit: -1
+    timeFrame: perpetual
+    geo: global
+    unit: 1
+    price: free (Apache-2.0; user pays own LLM and infra costs)
+    userMultiplied: false
+  elements:
+  - name: CLI
+  - name: GitHub Action
+  - name: Docker
+  - name: Self-hosted webhook server
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
