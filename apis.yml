@@ -101,6 +101,12 @@ apis:
     public HTTP REST API with stable endpoints; access is via the Git app, IDE plugins,
     and CLI. This entry is a placeholder for any future documented hosted API surface.
 common:
+- type: TrustCenter
+  url: security/qodo-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/qodo-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/qodo-domain-security.yml
 - type: GitHubOrganization
   url: https://github.com/qodo-ai
 - type: LinkedIn
@@ -115,6 +121,8 @@ common:
   url: rate-limits/qodo-rate-limits.yml
 - type: FinOps
   url: finops/qodo-finops.yml
+- type: Blog
+  url: https://www.qodo.ai/feed/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
