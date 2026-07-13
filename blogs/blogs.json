@@ -1,0 +1,13 @@
+{
+  "repo": "qodo",
+  "feeds": [
+    {
+      "source": "https://www.qodo.ai/feed/",
+      "feed_url": "https://www.qodo.ai/feed/",
+      "title": "Qodo Blog",
+      "saved": 5
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 17
+}
