@@ -1,0 +1,14 @@
+{
+  "provider": "qodo",
+  "sources": [
+    "qodo-openapi.yml"
+  ],
+  "outputs": [],
+  "archived": [
+    "archived qodo-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
