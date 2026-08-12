@@ -44,7 +44,7 @@ apis:
     type: Documentation
   - url: https://github.com/qodo-ai/pr-agent
     type: SourceCode
-  - url: openapi/qodo-openapi.yml
+  - url: openapi/_original/qodo-openapi.yml
     type: OpenAPI
   - url: collections/qodo.postman_collection.json
     type: PostmanCollection
@@ -106,7 +106,7 @@ apis:
   properties:
   - url: https://docs.qodo.ai
     type: Documentation
-  - url: openapi/qodo-openapi.yml
+  - url: openapi/_original/qodo-openapi.yml
     type: OpenAPI
   description: The hosted Qodo platform that backs Qodo Merge, Qodo Gen, and Qodo
     Command. As of this writing Qodo does not publish a documented, general-purpose
