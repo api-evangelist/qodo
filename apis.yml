@@ -28,7 +28,7 @@ tags:
 - Pull Requests
 created: '2026-06-21'
 modified: '2026-06-21'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: qodo:qodo-merge-pr-agent
   name: Qodo Merge (PR-Agent)
