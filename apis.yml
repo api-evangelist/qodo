@@ -21,6 +21,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/qodo.png
 tags:
+- Artificial Intelligence
+- Code Review
+- Code Integrity
+- Developer Tools
+- Pull Requests
+tags_raw:
 - AI
 - Code Review
 - Code Integrity
@@ -33,6 +39,11 @@ apis:
 - aid: qodo:qodo-merge-pr-agent
   name: Qodo Merge (PR-Agent)
   tags:
+  - Code Review
+  - Pull Requests
+  - Git App
+  - Open-Source
+  tags_raw:
   - Code Review
   - Pull Requests
   - Git App
@@ -98,6 +109,10 @@ apis:
 - aid: qodo:qodo-hosted-api
   name: Qodo Hosted API
   tags:
+  - Platform
+  - Hosted
+  - Integration
+  tags_raw:
   - Platform
   - Hosted
   - Integrations
