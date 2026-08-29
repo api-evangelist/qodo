@@ -7,6 +7,18 @@ description: Qodo (formerly CodiumAI) is an AI code-integrity platform for autom
   is delivered primarily as a hosted Git app and open-source PR-Agent (Qodo Merge),
   IDE plugins (Qodo Gen), and a terminal agent runtime (Qodo Command/CLI) rather than
   a broad public HTTP API.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
