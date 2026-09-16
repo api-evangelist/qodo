@@ -2,10 +2,10 @@ aid: qodo
 url: https://raw.githubusercontent.com/api-evangelist/qodo/refs/heads/main/apis.yml
 name: Qodo
 kind: company
-description: Qodo (formerly CodiumAI) is an AI code-integrity platform for automated code review, test generation,
-  and code quality across the SDLC. Its developer surface is delivered primarily as a hosted Git app and open-source
-  PR-Agent (Qodo Merge), IDE plugins (Qodo Gen), and a terminal agent runtime (Qodo Command/CLI) rather than a broad
-  public HTTP API.
+description: Qodo (formerly CodiumAI) is an AI code-integrity platform for automated code review, test
+  generation, and code quality across the SDLC. Its developer surface is delivered primarily as a hosted
+  Git app and open-source PR-Agent (Qodo Merge), IDE plugins (Qodo Gen), and a terminal agent runtime
+  (Qodo Command/CLI) rather than a broad public HTTP API.
 deliveryModel:
   model: unknown
   open_source: unknown
@@ -44,7 +44,7 @@ tags_raw:
 - Developer Tools
 - Pull Requests
 created: '2026-06-21'
-modified: '2026-06-21'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: qodo:qodo-merge-pr-agent
@@ -72,10 +72,10 @@ apis:
     type: PostmanCollection
   - url: collections/qodo.opencollection.json
     type: OpenCollection
-  description: AI pull-request reviewer. Available as the Apache-2.0 open-source PR-Agent (CLI, GitHub Action, Docker,
-    self-hosted webhook server) and as the hosted Qodo Merge Git app. It is invoked through Git provider events
-    and PR comment commands (/review, /describe, /improve, /ask) rather than a documented public REST API; self-hosted
-    deployments expose a webhook HTTP endpoint that Git providers call.
+  description: AI pull-request reviewer. Available as the Apache-2.0 open-source PR-Agent (CLI, GitHub
+    Action, Docker, self-hosted webhook server) and as the hosted Qodo Merge Git app. It is invoked through
+    Git provider events and PR comment commands (/review, /describe, /improve, /ask) rather than a documented
+    public REST API; self-hosted deployments expose a webhook HTTP endpoint that Git providers call.
 - aid: qodo:qodo-gen
   name: Qodo Gen
   tags:
@@ -91,9 +91,9 @@ apis:
     type: x-jetbrains-plugin
   - url: https://marketplace.visualstudio.com/items?itemName=Codium.codium
     type: x-vscode-extension
-  description: AI pair-programmer delivered as JetBrains and VS Code IDE plugins for context-aware code generation,
-    test generation, and documentation. It is an editor extension and does not expose a public HTTP API; integration
-    is through the IDE marketplace plugins.
+  description: AI pair-programmer delivered as JetBrains and VS Code IDE plugins for context-aware code
+    generation, test generation, and documentation. It is an editor extension and does not expose a public
+    HTTP API; integration is through the IDE marketplace plugins.
 - aid: qodo:qodo-command-cli
   name: Qodo Command/CLI
   tags:
@@ -110,10 +110,10 @@ apis:
     type: SourceCode
   - url: https://www.npmjs.com/package/@qodo/command
     type: x-npm-package
-  description: Terminal runtime for building, running, and managing AI agents across the SDLC, installed via npm
-    (@qodo/command). Agents can be exposed locally as HTTP services (--webhook), as a web UI (--ui), or as Model
-    Context Protocol (MCP) servers (--mcp). These are user-hosted local services, not a documented hosted Qodo REST
-    API.
+  description: Terminal runtime for building, running, and managing AI agents across the SDLC, installed
+    via npm (@qodo/command). Agents can be exposed locally as HTTP services (--webhook), as a web UI (--ui),
+    or as Model Context Protocol (MCP) servers (--mcp). These are user-hosted local services, not a documented
+    hosted Qodo REST API.
 - aid: qodo:qodo-hosted-api
   name: Qodo Hosted API
   tags:
@@ -131,11 +131,12 @@ apis:
     type: Documentation
   - url: openapi/_original/qodo-openapi.yml
     type: OpenAPI
-  description: The hosted Qodo platform that backs Qodo Merge, Qodo Gen, and Qodo Command. As of this writing Qodo
-    does not publish a documented, general-purpose public HTTP REST API with stable endpoints; access is via the
-    Git app, IDE plugins, and CLI. This entry is a placeholder for any future documented hosted API surface.
+  description: The hosted Qodo platform that backs Qodo Merge, Qodo Gen, and Qodo Command. As of this
+    writing Qodo does not publish a documented, general-purpose public HTTP REST API with stable endpoints;
+    access is via the Git app, IDE plugins, and CLI. This entry is a placeholder for any future documented
+    hosted API surface.
 - aid: qodo:qodo-gen-qodo-command-api
-  name: Qodo Qodo Command API
+  name: Qodo Command API
   description: Terminal agent runner; serve agents as HTTP APIs or MCP services.
   humanURL: https://docs.qodo.ai/code-review
   baseURL: https://qodo-merge.st.qodo.ai/api/v1
@@ -165,7 +166,7 @@ apis:
   - type: SourceCode
     url: https://github.com/qodo-ai/command
 - aid: qodo:qodo-gen-qodo-gen-api
-  name: Qodo Qodo Gen API
+  name: Qodo Gen API
   description: AI coding assistant IDE plugin - generation, chat, and test generation.
   humanURL: https://docs.qodo.ai/code-review
   baseURL: https://qodo-merge.st.qodo.ai/api/v1
@@ -195,7 +196,7 @@ apis:
   - type: SourceCode
     url: https://github.com/qodo-ai/command
 - aid: qodo:qodo-gen-qodo-merge-api
-  name: Qodo Qodo Merge API
+  name: Qodo Merge API
   description: Agentic pull request review Git app (built on open-source PR-Agent).
   humanURL: https://docs.qodo.ai/code-review
   baseURL: https://qodo-merge.st.qodo.ai/api/v1
