@@ -1,0 +1,34 @@
+# Front Door AI Index — qodo — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: qodo
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.qodo.ai
+  final_host: www.qodo.ai
+  ownership: own
+  owner: qodo
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 55
+  host_score: 55
+  density: 21.76
+  words: 2528
+  tiers:
+    agentic: 16
+    core: 35
+    model: 4
+  ambiguous: 24
+  top_terms:
+    AI: 34
+    agent: 23
+    agentic: 12
+    AI agent: 2
+    OpenAI: 2
+    copilot: 2
+    Anthropic: 1
+    Azure OpenAI: 1
+    generative ai: 1
+    intelligence: 1
