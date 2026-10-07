@@ -232,6 +232,8 @@ apis:
   - type: SourceCode
     url: https://github.com/qodo-ai/command
 common:
+- type: Pricing
+  url: https://www.qodo.ai/pricing/
 - type: TrustCenter
   url: security/qodo-trust-center.yml
 - type: VulnerabilityDisclosure
