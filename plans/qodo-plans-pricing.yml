@@ -42,3 +42,34 @@ plans:
   included_quota: Everything in Pro Team, plus SSO/SAML, audit logs, BYOK, single-tenant SaaS or on-prem
 rate_limit_statements:
 - No rate limits
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - subscription
+  units:
+  - credit
+  plans:
+  - name: Free Trial
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Pro Team
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
